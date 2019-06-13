@@ -803,7 +803,7 @@ html, body {
     display: block;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 575px) {
     .skill-list__tab {
       margin: 0;
       flex: 1;
