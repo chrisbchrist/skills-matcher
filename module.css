@@ -64,7 +64,6 @@ html, body {
   .matcher__section-header {
     font-family: ProximaNova, Raleway;
     color: #0d76bd;
-    font-size: 
   }
 
   .matcher__accent {
@@ -83,6 +82,7 @@ html, body {
     color: #6a737b;
     font-size: 1.25rem;
     margin-bottom: .5rem;
+    max-width: 100%;
     font-family: ProximaNova, Raleway;
   }
   
@@ -400,6 +400,7 @@ html, body {
     text-align: center;
     color: #6a737b;
     transition: all .3s;
+    max-width: 100%;
   }
 
   @media screen and (max-width: 962px) {
@@ -537,8 +538,8 @@ html, body {
 
   .rt-tr.-even {
     background: #eee;
-    border-top: 1px solid #6a737b;
-    border-bottom: 1px solid #6a737b;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
   }
 
   .rt-tr-group:last-child {
@@ -756,6 +757,10 @@ html, body {
     color: white !important;
   }
 
+  .skill-list__wrapper {
+
+  }
+
   .skill-list__menu {
     display: flex;
     justify-content: center;
@@ -804,6 +809,33 @@ html, body {
   }
 
   @media screen and (max-width: 575px) {
+    .skill-list__wrapper {
+      display: flex;
+    }
+
+    .skill-list__menu {
+      flex-direction: column;
+      height: 400px;
+    }
+
+    .skill-list__content {
+      font-size: 14px;
+    }
+
+    .skill-list__tab {
+      padding: 10px;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .skill-list__tab--selected {
+      background: #16a0db;
+    }
+
+    .matcher__border--skills {
+      padding: 0;
+    }
+
     .skill-list__tab {
       margin: 0;
       flex: 1;

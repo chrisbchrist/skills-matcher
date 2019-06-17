@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ReactTable from "react-table";
 import SkillList from "./SkillList";
@@ -8,16 +8,11 @@ import PrintButton from "./PrintButton";
 import Loader from "./Loader";
 
 const Results = props => {
+  const scrollRef = useRef(null);
   const [jobs, setJobs] = React.useState([]);
-  // const [skillsModal, setSkillsModal] = React.useState(false);
-
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  }
 
   //POST answers and store results on mount
-  React.useEffect(() => {
-    scrollToTop();
+ useEffect(() => {
     let answerObj = {
       SKAValueList: props.skills.map(skill => ({
         ElementId: skill.ElementId,
@@ -40,6 +35,10 @@ const Results = props => {
         setJobs(response.SKARankList);
       });
   }, []);
+
+  useEffect(() => {
+    props.scrollToTop(scrollRef);
+  }, [jobs]);
 
   // Not using modals for now
   // const toggleModal = () => {
@@ -154,7 +153,7 @@ const Results = props => {
   return (
     <Switch>
       <Route exact={true} path="/">
-        <div className="matcher--results">
+        <div className="matcher--results" ref={scrollRef}>
           <div className="matcher__instructions">
             <h2 className="matcher__section-header">Your Results</h2>
             <div className="matcher__accent"></div>
@@ -193,7 +192,7 @@ const Results = props => {
             }}
             onPageChange={page => {
               //Scroll to top on new results page
-              scrollToTop();
+              props.scrollToTop(scrollRef);
             }}
             columns={columns}
             data={jobs}
